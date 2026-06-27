@@ -85,4 +85,4 @@ This is a learning project. Expect messy code, experiments, and constant changes
 
 ## 📜 License
 
-MIT License
+[MIT License](LICENSE)
