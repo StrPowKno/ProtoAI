@@ -2,7 +2,7 @@ import os
 import time
 
 
-def run_game(ai_func):
+def run_game(ai_func, sleep):
 
     WIDTH = 10
     HEIGHT = 10
@@ -30,6 +30,7 @@ def run_game(ai_func):
             (6, 3),
             (3, 6),
             (6, 6),
+            (3, 4),
         ]
 
 
@@ -65,6 +66,13 @@ def run_game(ai_func):
             "exit_x": exit_x,
             "exit_y": exit_y,
             "has_key": has_key,
+            "walls": [
+                (3, 3),
+                (6, 3),
+                (6, 6),
+                (3, 6),
+                (3, 4),
+            ]
         }
 
 
@@ -82,7 +90,7 @@ def run_game(ai_func):
         elif move == "d":
             new_x += 1
         
-        time.sleep(0.3)  # Add a small delay to make the game more playable
+        time.sleep(sleep)  # Add a small delay to make the game more playable
 
         # Stay inside the map
         if 0 <= new_x < WIDTH and 0 <= new_y < HEIGHT:

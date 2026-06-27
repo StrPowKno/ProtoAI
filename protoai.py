@@ -42,17 +42,38 @@ goal_y > player_y  -> Goal is DOWN
 def ai(state:dict) -> str: 
     # print(state)
 
+    WALL_PENALTY = 1000
 
     # Defining the functions
 
     def distance(x1, y1, x2, y2) -> int:
         return abs(x1 - x2) + abs(y1 - y2)
     
+    def is_wall(x, y):
+        return (x, y) in walls
+    
+    def is_inside_map(x:int, y:int) -> bool: # Coming soon
+        pass
+
     def best_direction(tmp_player_x, tmp_player_y):
         up = distance(tmp_player_x, tmp_player_y - 1, goal_x, goal_y)
         down = distance(tmp_player_x, tmp_player_y + 1, goal_x, goal_y)
         right = distance(tmp_player_x + 1, tmp_player_y, goal_x, goal_y)
         left = distance(tmp_player_x - 1, tmp_player_y, goal_x, goal_y)
+
+        if is_wall(tmp_player_x, tmp_player_y -1):
+            up += WALL_PENALTY
+
+        if is_wall(tmp_player_x, tmp_player_y + 1):
+            down += WALL_PENALTY
+
+        if is_wall(tmp_player_x + 1, tmp_player_y):
+            right += WALL_PENALTY
+
+        if is_wall(tmp_player_x - 1, tmp_player_y):
+            left += WALL_PENALTY
+
+
 
         lowest_distance = min(up, down, right, left)
 
@@ -67,6 +88,9 @@ def ai(state:dict) -> str:
         
         elif left == lowest_distance:
             return 'a'
+        
+
+
 
 
 
@@ -94,6 +118,7 @@ def ai(state:dict) -> str:
 
     has_key = state["has_key"]
 
+    walls = state["walls"]
 
     # Defining the goal
 
