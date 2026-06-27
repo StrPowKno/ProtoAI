@@ -44,7 +44,11 @@ Each frame:
 ProtoAI/
 ├── main.py
 ├── game.py
-├── ai.py
+├── random_ai.py
+├── protoai.py
+├── graph -> showing how the game looks
+├── LICENSE -> MIT
+├── .gitignore -> python gitignore template
 └── README.md
 ```
 
@@ -63,7 +67,7 @@ ProtoAI/
 - [x] Basic AI movement
 - [x] Key collection
 - [x] Exit system
-- [ ] Wall avoidance
+- [x] Wall avoidance
 - [ ] Pathfinding (A*)
 - [ ] Memory system
 - [ ] Learning AI
