@@ -81,6 +81,8 @@ def run_game(ai_func):
             new_x -= 1
         elif move == "d":
             new_x += 1
+        
+        time.sleep(0.3)  # Add a small delay to make the game more playable
 
         # Stay inside the map
         if 0 <= new_x < WIDTH and 0 <= new_y < HEIGHT:
@@ -104,4 +106,4 @@ def run_game(ai_func):
 
 
 if __name__ == "__main__":
-    run_game()
+    print("Please run main.py!")

@@ -42,7 +42,37 @@ goal_y > player_y  -> Goal is DOWN
 def ai(state:dict) -> str: 
     # print(state)
 
-    """ state = {
+
+    # Defining the functions
+
+    def distance(x1, y1, x2, y2) -> int:
+        return abs(x1 - x2) + abs(y1 - y2)
+    
+    def best_direction(tmp_player_x, tmp_player_y):
+        up = distance(tmp_player_x, tmp_player_y - 1, goal_x, goal_y)
+        down = distance(tmp_player_x, tmp_player_y + 1, goal_x, goal_y)
+        right = distance(tmp_player_x + 1, tmp_player_y, goal_x, goal_y)
+        left = distance(tmp_player_x - 1, tmp_player_y, goal_x, goal_y)
+
+        lowest_distance = min(up, down, right, left)
+
+        if up == lowest_distance:
+            return 'w'
+        
+        elif down == lowest_distance:
+            return 's'
+        
+        elif right == lowest_distance:
+            return 'd'
+        
+        elif left == lowest_distance:
+            return 'a'
+
+
+
+
+
+    """ state = {   
             "player_x": player_x,
             "player_y": player_y,
             "key_x": key_x,
@@ -76,22 +106,27 @@ def ai(state:dict) -> str:
         goal_y = exit_y
 
     else:
-        raise Exception
+        raise ValueError("Invalid state: has_key must be True or False")
+    
+
+
+    return best_direction(player_x, player_y)
+    
+
+
     
 
     # Defining the moves (WASD)
 
-    if goal_x < player_x:
-        return "a" # Move LEFT
-    
-    if goal_x > player_x:
-        return "d" # Move RIGHT
-    
-    if goal_y < player_y:
-        return "w" # Move UP
-    
-    if goal_y > player_y:
-        return "s" # Move DOWN
+    # if goal_x < player_x:
+    #     return "a" # Move LEFT
+    # 
+    # if goal_x > player_x:
+    #     return "d" # Move RIGHT
+    # 
+    # if goal_y < player_y:
+    #     return "w" # Move UP
+    # 
+    # if goal_y > player_y:
+    #     return "s" # Move DOWN
         
-
-    return ""
